@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports: 
+      - 6000
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - web
+    ports:
+      - 6000:6000
